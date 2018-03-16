@@ -22,14 +22,14 @@ public class ContactManagerController {
 	@Autowired
 	private ContactsDAO contactsDAO;
 
-	@GetMapping("/findall")
+	@GetMapping("/findallcontacts")
 	public List<Contact> findAllContacts() {
 
 		List<Contact> contactList = contactsDAO.findAll();
 		return contactList;
 	}
 
-	@GetMapping("/findbyid/{id}")
+	@GetMapping("/findcontactbyid/{id}")
 	public Contact findById(@PathVariable("id") final Integer id) {
 
 		Contact contact = contactsDAO.findById(id);
