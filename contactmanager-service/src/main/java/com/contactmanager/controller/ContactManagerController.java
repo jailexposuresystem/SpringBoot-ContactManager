@@ -3,6 +3,8 @@ package com.contactmanager.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -50,7 +53,7 @@ public class ContactManagerController {
 	@GetMapping("/findcontactbyid/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") final Integer id) {
 
-		Preconditions.checkNotNull(id, "Id parameter should not be null");
+		// Preconditions.checkNotNull(id, "Id parameter should not be null");
 
 		// return contactsService.findById(id);
 
@@ -65,6 +68,7 @@ public class ContactManagerController {
 	}
 
 	@PostMapping("/addcontact")
+	@ResponseBody
 	public Contact addContact(@RequestBody final Contact contact) {
 
 		LOG.info("Request to add contact", contact.getName().toString());
